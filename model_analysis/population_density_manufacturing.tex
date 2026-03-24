@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newcommand{\pd}{\partial}
+
+\title{Population Density and the Development of Manufacturing:\\ A Two-Sector Model}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Why did manufacturing take root in East Asia but not in Sub-Saharan Africa? We develop a simple two-sector model in which population density is the key determinant of comparative advantage in manufacturing. The core mechanism is straightforward: manufacturing requires concentrated labor, and regions with low population density face higher effective labor costs due to spatial frictions---transport, search, and agglomeration effects. These frictions make manufacturing uncompetitive relative to agriculture, which is land-intensive and benefits from dispersed populations.
+
+\section{Model Setup}
+
+\subsection{Environment}
+
+Consider a region $r$ endowed with land $T_r$ and population $L_r$. Define population density as
+\[
+    d_r \equiv \frac{L_r}{T_r}.
+\]
+There are two sectors: agriculture ($A$) and manufacturing ($M$). Labor is mobile across sectors within a region, so that $L_r = L_r^A + L_r^M$.
+
+\subsection{Technology}
+
+\paragraph{Agriculture.} Agricultural output uses land and labor with constant returns to scale:
+\[
+    Y_r^A = A_r \left(T_r^A\right)^\alpha \left(L_r^A\right)^{1-\alpha}, \quad \alpha \in (0,1),
+\]
+where $A_r$ is agricultural productivity and $T_r^A$ is land allocated to farming.
+
+\paragraph{Manufacturing.} Manufacturing uses only labor but exhibits agglomeration externalities that depend on the density of manufacturing workers:
+\[
+    Y_r^M = B_r \left(\frac{L_r^M}{T_r}\right)^\gamma L_r^M = B_r \frac{\left(L_r^M\right)^{1+\gamma}}{T_r^\gamma}, \quad \gamma > 0,
+\]
+where $B_r$ is manufacturing productivity and $\gamma$ captures agglomeration effects. The term $(L_r^M / T_r)^\gamma$ reflects the idea that denser concentrations of manufacturing workers raise productivity through knowledge spillovers, thicker labor markets, and shared infrastructure. This is the key departure from standard models: manufacturing productivity is increasing in the \emph{density} of manufacturing employment, not just its level.
+
+\subsection{Spatial Labor Cost Friction}
+
+In low-density regions, assembling a manufacturing workforce is costly. Workers must be drawn from greater distances, raising transport and migration costs. We model this as an effective wage premium that manufacturing firms must pay:
+\[
+    w_r^M = w_r \cdot \phi(d_r), \quad \text{where } \phi(d_r) = 1 + \frac{\theta}{d_r}, \quad \theta > 0.
+\]
+Here $w_r$ is the base wage (set by agriculture) and $\phi(d_r)$ is the spatial friction multiplier. When density $d_r$ is low, $\phi$ is large---firms must pay a premium to attract spatially dispersed workers. As $d_r \to \infty$, the friction vanishes ($\phi \to 1$).
+
+\section{Equilibrium}
+
+\subsection{Agricultural Wage}
+
+In a competitive agricultural sector, the wage equals the marginal product of labor:
+\[
+    w_r = (1 - \alpha) A_r \left(\frac{T_r^A}{L_r^A}\right)^\alpha.
+\]
+In low-density regions, the land-to-labor ratio $T_r^A / L_r^A$ is high, so agricultural wages are relatively high. Land abundance raises the opportunity cost of reallocating labor to manufacturing.
+
+\subsection{Manufacturing Profitability}
+
+A manufacturing firm's profit per worker (net of the effective wage) is
+\[
+    \pi_r^M = B_r (1+\gamma) \left(\frac{L_r^M}{T_r}\right)^\gamma - w_r \cdot \phi(d_r).
+\]
+Manufacturing is viable when $\pi_r^M \geq 0$. Substituting the friction term:
+\[
+    \pi_r^M = B_r (1+\gamma) \left(\frac{L_r^M}{T_r}\right)^\gamma - w_r \left(1 + \frac{\theta}{d_r}\right).
+\]
+
+\subsection{Density Threshold for Manufacturing}
+
+\begin{proposition}[Critical Density Threshold]
+There exists a critical population density $d^*$ below which manufacturing is not viable. Setting $\pi_r^M = 0$ and letting $\lambda = L_r^M / L_r$ denote the manufacturing employment share, the threshold satisfies:
+\[
+    B_r (1+\gamma)(\lambda \, d_r)^\gamma = w_r\left(1 + \frac{\theta}{d_r}\right).
+\]
+For a given $\lambda$ and $w_r$, the left-hand side is increasing in $d_r$ (agglomeration benefit) while the right-hand side is decreasing in $d_r$ (friction cost falls). The unique crossing point defines $d^*$.
+\end{proposition}
+
+\begin{proof}
+Define $f(d) = B_r(1+\gamma)(\lambda d)^\gamma$ and $g(d) = w_r(1 + \theta/d)$. We have $f(0) = 0 < g(0) = \infty$ and $f(d) \to \infty$ while $g(d) \to w_r$ as $d \to \infty$. Since $f$ is continuous and strictly increasing and $g$ is continuous and strictly decreasing, by the intermediate value theorem there exists a unique $d^* > 0$ such that $f(d^*) = g(d^*)$. For $d < d^*$, $f(d) < g(d)$ so $\pi_r^M < 0$.
+\end{proof}
+
+\subsection{Comparative Statics}
+
+\begin{proposition}[Density and Manufacturing Share]
+The equilibrium manufacturing employment share $\lambda^*$ is increasing in population density $d_r$.
+\end{proposition}
+
+\begin{proof}
+In an interior equilibrium, workers are indifferent between sectors. The indifference condition is:
+\[
+    B_r(1+\gamma)(\lambda d_r)^\gamma = (1-\alpha)A_r \left(\frac{1}{(1-\lambda)d_r}\right)^\alpha \left(1 + \frac{\theta}{d_r}\right).
+\]
+The left-hand side is increasing in both $\lambda$ and $d_r$. The right-hand side is decreasing in $d_r$ (both through the agricultural MPL and the friction term). By implicit differentiation, $\pd \lambda^* / \pd d_r > 0$.
+\end{proof}
+
+\begin{corollary}
+Regions with higher population density have:
+\begin{enumerate}
+    \item a larger manufacturing sector (higher $\lambda^*$),
+    \item lower effective manufacturing wages relative to output (lower unit labor cost),
+    \item stronger agglomeration externalities in manufacturing.
+\end{enumerate}
+\end{corollary}
+
+\section{Application: Africa vs.\ East Asia}
+
+\subsection{Calibration}
+
+Consider two stylized regions:
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Parameter & Sub-Saharan Africa & East Asia \\
+\hline
+Population density ($d$) & Low ($d_{\text{AF}}$) & High ($d_{\text{EA}} \gg d_{\text{AF}}$) \\
+Land endowment ($T$) & Large & Small \\
+Ag productivity ($A$) & Moderate & Moderate \\
+Mfg productivity ($B$) & Similar & Similar \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Mechanism}
+
+The model identifies a \textbf{double disadvantage} for low-density regions:
+
+\begin{enumerate}
+    \item \textbf{High spatial frictions.} With $d_{\text{AF}}$ low, the friction multiplier $\phi(d_{\text{AF}}) = 1 + \theta/d_{\text{AF}}$ is large. Manufacturing firms in Africa face substantially higher effective labor costs than those in Asia, where $\phi(d_{\text{EA}}) \approx 1$.
+
+    \item \textbf{Weak agglomeration.} Even if some manufacturing employment exists, the agglomeration term $(\lambda \, d_{\text{AF}})^\gamma$ is small. Manufacturing productivity remains low because workers are too spread out to generate spillovers.
+\end{enumerate}
+
+Meanwhile, Africa's \textbf{agricultural sector benefits} from low density. Abundant land per worker raises agricultural productivity and wages, further increasing the opportunity cost of manufacturing employment.
+
+\subsection{Equilibrium Comparison}
+
+In East Asia ($d_{\text{EA}}$ high):
+\[
+    \underbrace{B(1+\gamma)(\lambda^*_{\text{EA}} \, d_{\text{EA}})^\gamma}_{\text{high: strong agglomeration}} > \underbrace{w_{\text{EA}} \cdot \phi(d_{\text{EA}})}_{\text{low friction cost}} \implies \lambda^*_{\text{EA}} \text{ large}.
+\]
+
+In Sub-Saharan Africa ($d_{\text{AF}}$ low):
+\[
+    \underbrace{B(1+\gamma)(\lambda^*_{\text{AF}} \, d_{\text{AF}})^\gamma}_{\text{low: weak agglomeration}} < \underbrace{w_{\text{AF}} \cdot \phi(d_{\text{AF}})}_{\text{high friction cost}} \implies \lambda^*_{\text{AF}} \approx 0.
+\]
+
+The result is a \textbf{sorting equilibrium}: high-density regions specialize in manufacturing; low-density regions remain agricultural.
+
+\section{Multiple Equilibria and Poverty Traps}
+
+The agglomeration externality introduces the possibility of multiple equilibria. For intermediate values of $d_r$, there may exist both a ``low'' equilibrium ($\lambda \approx 0$, agriculture only) and a ``high'' equilibrium ($\lambda > 0$, with manufacturing).
+
+\begin{proposition}[Multiplicity]
+For $d_r$ in a neighborhood above $d^*$, there exist at least two stable equilibria: one with $\lambda = 0$ and one with $\lambda > 0$. The low equilibrium is a poverty trap: absent a coordinated shift of labor into manufacturing, the agglomeration externality never activates.
+\end{proposition}
+
+This is particularly relevant for Africa. Even where density is marginally sufficient, the coordination failure prevents manufacturing from emerging. Historical contingencies---such as colonial infrastructure oriented toward resource extraction rather than manufacturing---may have selected the low equilibrium.
+
+\section{Policy Implications}
+
+\begin{enumerate}
+    \item \textbf{Urbanization policy.} Policies that increase effective density---through urbanization, transport infrastructure, or special economic zones---can push regions past the critical threshold $d^*$.
+
+    \item \textbf{Targeted subsidies.} Temporary manufacturing subsidies can overcome the coordination failure by making it individually rational for workers to enter manufacturing before agglomeration benefits materialize.
+
+    \item \textbf{Infrastructure investment.} Reducing the spatial friction parameter $\theta$ (e.g., through roads, ports, and communication networks) directly lowers $d^*$, making manufacturing viable at lower densities.
+\end{enumerate}
+
+\section{Conclusion}
+
+This model provides a parsimonious explanation for why manufacturing developed in high-density East Asia but not in low-density Sub-Saharan Africa. The interaction of three forces---agglomeration externalities in manufacturing, spatial labor cost frictions, and the high opportunity cost of land-abundant agriculture---creates a density threshold below which manufacturing cannot emerge. Africa's geography, characterized by vast land and dispersed populations, placed most of the continent below this threshold, locking it into agricultural specialization and contributing to persistent poverty.
+
+\end{document}
