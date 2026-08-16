@@ -1,4 +1,10 @@
 # CUSTOM EXCLUSIONS
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
 ckpts/
 ckpts_old/
 logs/
